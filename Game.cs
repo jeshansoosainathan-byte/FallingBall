@@ -32,7 +32,7 @@ namespace MohawkGame2D
             Window.ClearBackground(Color.OffWhite);
 
 
-            //Move Ball
+            //Move Ball With Gravity
             
             velocity += gravity;
             position += velocity * Time.DeltaTime;
