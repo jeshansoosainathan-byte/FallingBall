@@ -15,6 +15,9 @@ namespace MohawkGame2D
         Vector2 gravity = new Vector2(0, 8);
         Vector2 velocity;
         float radius = 25;
+
+        float forceKept = 0.50f;
+
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -36,6 +39,18 @@ namespace MohawkGame2D
             
             velocity += gravity;
             position += velocity * Time.DeltaTime;
+
+            //Check if we're bellow screen height
+            if (position.Y + radius > Window.Height)
+            {
+                //Move ball to touch edge
+                position.Y = Window.Height - radius;
+                //Invert velocity to bounce up, scale velocity down a bit
+                velocity.Y = -velocity.Y * forceKept;
+
+
+            }
+
 
             Draw.LineSize = 1;
             Draw.LineColor = Color.Black;
